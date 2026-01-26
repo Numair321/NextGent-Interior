@@ -1,0 +1,47 @@
+export default function Services() {
+    const services = [
+        {
+            title: "Modular Kitchen",
+            description: "All shapes of Kitchens like L, U. We will design customized to your space.",
+            icon: "🍳"
+        },
+        {
+            title: "Wardrobes",
+            description: "Best Wardrobes in class from best designers using premium materials.",
+            icon: "👗"
+        },
+        {
+            title: "Living Rooms",
+            description: "Best Luxurious Living Room designs that blend comfort and style.",
+            icon: "🛋️"
+        },
+        {
+            title: "Ceiling",
+            description: "Best in quality and stunning ceiling designs (False Roofing).",
+            icon: "✨"
+        }
+    ];
+
+    return (
+        <section id="services" className="py-20 bg-muted">
+            <div className="container mx-auto px-4 text-center">
+                <h2 className="text-3xl md:text-4xl font-serif font-bold text-secondary mb-4">Our Features</h2>
+                <p className="text-gray-500 mb-12 max-w-2xl mx-auto">
+                    We have an exceptional range of services to help you build your dream home.
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {services.map((service, index) => (
+                        <div key={index} className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-t-4 border-t-primary border-transparent">
+                            <div className="text-4xl mb-4">{service.icon}</div>
+                            <h3 className="text-xl font-bold text-secondary mb-3">{service.title}</h3>
+                            <p className="text-gray-600 text-sm leading-relaxed">
+                                {service.description}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+}
