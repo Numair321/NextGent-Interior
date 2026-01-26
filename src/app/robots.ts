@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/private/',
         },
-        sitemap: 'https://nextgeninterior.in/sitemap.xml',
+        sitemap: 'https://nextgen-interior.vercel.app/sitemap.xml',
     };
 }

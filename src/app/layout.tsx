@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "NextGen Interior - Top Interior Designers in Bangalore",
     description: "Innovative Ideas, Stylish Designs. Transform your space with NextGen Interior.",
-    url: "https://nextgeninterior.in",
+    url: "https://nextgen-interior.vercel.app",
     siteName: "NextGen Interior",
     images: [
       {
@@ -78,9 +78,9 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "InteriorDesigner",
               "name": "NextGen Interior",
-              "image": "https://nextgeninterior.in/hero_bg.png",
-              "@id": "https://nextgeninterior.in",
-              "url": "https://nextgeninterior.in",
+              "image": "https://nextgen-interior.vercel.app/hero_bg.png",
+              "@id": "https://nextgen-interior.vercel.app",
+              "url": "https://nextgen-interior.vercel.app",
               "telephone": "9580591558",
               "priceRange": "$$",
               "address": {

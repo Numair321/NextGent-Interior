@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
     return [
         {
-            url: 'https://nextgeninterior.in',
+            url: 'https://nextgen-interior.vercel.app',
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 1,
