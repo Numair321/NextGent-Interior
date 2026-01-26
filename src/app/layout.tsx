@@ -56,6 +56,9 @@ export const metadata: Metadata = {
     icon: "/logo.png",
     apple: "/logo.png",
   },
+  verification: {
+    google: "googlef0b4e609528543be",
+  },
 };
 
 export default function RootLayout({
