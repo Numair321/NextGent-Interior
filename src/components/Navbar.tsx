@@ -19,12 +19,12 @@ export default function Navbar() {
     return (
         <nav className="fixed w-full z-50 top-0 start-0 border-b border-gray-100 bg-white/90 backdrop-blur-md transition-all">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+                <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="/logo.png" alt="NextGen Interior Logo" width="40" height="40" className="w-10 h-10 object-contain" />
                     <span className="self-center text-2xl font-serif font-bold whitespace-nowrap text-foreground">
                         NextGen <span className="text-primary">Interior</span>
                     </span>
-                </Link>
+                </a>
                 <button
                     onClick={() => setIsOpen(!isOpen)}
                     type="button"

@@ -6,11 +6,11 @@ export default function Footer() {
             <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0 max-w-sm">
-                        <Link href="/" className="flex items-center">
+                        <a href="/" className="flex items-center">
                             <span className="self-center text-2xl font-serif font-semibold whitespace-nowrap text-white">
                                 NextGen <span className="text-primary">Interior</span>
                             </span>
-                        </Link>
+                        </a>
                         <p className="mt-4 text-gray-400 font-sans text-sm leading-relaxed">
                             We operate in architecture and interior designing with a talented team. We combine quality, expertise, and experience to produce premium, stylish solutions.
                         </p>
