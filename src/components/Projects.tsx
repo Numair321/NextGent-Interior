@@ -1,7 +1,10 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Projects() {
     const categories = ["Living Room", "Kitchen", "Office", "Bedroom"];
+    const [activeCategory, setActiveCategory] = useState("All");
 
     const projects = [
         { id: 1, title: "Modern Living Room", category: "Living Room", image: "/hero_bg.png" },
@@ -9,8 +12,23 @@ export default function Projects() {
         { id: 3, title: "Master Bedroom", category: "Bedroom", image: "/bedroom_design.png" },
         { id: 4, title: "Home Office", category: "Office", image: "/office_design.png" },
         { id: 5, title: "Contemporary Lounge", category: "Living Room", image: "/living_room_variation.png" },
-        { id: 6, title: "Elegant Dining", category: "Kitchen", image: "/kitchen_design.png" }, // Reusing for demo balance
+        { id: 6, title: "Elegant Dining", category: "Kitchen", image: "/kitchen_design.png" },
+        // New Kitchen Projects
+        { id: 7, title: "Luxury Marble Kitchen", category: "Kitchen", image: "/kitchen_project_1.png" },
+        { id: 8, title: "Scandinavian Bright Kitchen", category: "Kitchen", image: "/kitchen_project_2.png" },
+        { id: 9, title: "Industrial Loft Kitchen", category: "Kitchen", image: "/kitchen_project_3.png" },
+        // New Bedroom Projects
+        { id: 10, title: "Velvet Master Suite", category: "Bedroom", image: "/bedroom_project_1.png" },
+        { id: 11, title: "Minimalist Zen Bedroom", category: "Bedroom", image: "/bedroom_project_2.png" },
+        { id: 12, title: "Art Deco Navy Bedroom", category: "Bedroom", image: "/bedroom_project_3.png" },
+        // New Office Projects
+        { id: 13, title: "Executive Blue Office", category: "Office", image: "/office_project_1.png" },
+        { id: 14, title: "Creative Studio Workspace", category: "Office", image: "/office_project_2.png" },
     ];
+
+    const filteredProjects = activeCategory === "All"
+        ? projects
+        : projects.filter(project => project.category === activeCategory);
 
     return (
         <section id="projects" className="py-20 bg-white">
@@ -18,11 +36,26 @@ export default function Projects() {
                 <h2 className="text-3xl md:text-4xl font-serif font-bold text-secondary mb-4">Our Projects</h2>
                 <p className="text-gray-500 mb-12">Some of our finest work across different categories.</p>
 
-                {/* Filter Buttons (Visual Only) */}
+                {/* Filter Buttons */}
                 <div className="flex flex-wrap justify-center gap-4 mb-12">
-                    <button className="px-6 py-2 rounded-full bg-secondary text-white text-sm font-semibold hover:bg-primary transition-colors">All</button>
+                    <button
+                        onClick={() => setActiveCategory("All")}
+                        className={`px-6 py-2 rounded-full text-sm font-semibold transition-colors ${activeCategory === "All"
+                            ? "bg-secondary text-white hover:bg-primary"
+                            : "border border-gray-300 text-gray-600 hover:border-primary hover:text-primary"
+                            }`}
+                    >
+                        All
+                    </button>
                     {categories.map((cat) => (
-                        <button key={cat} className="px-6 py-2 rounded-full border border-gray-300 text-gray-600 text-sm font-semibold hover:border-primary hover:text-primary transition-colors">
+                        <button
+                            key={cat}
+                            onClick={() => setActiveCategory(cat)}
+                            className={`px-6 py-2 rounded-full text-sm font-semibold transition-colors ${activeCategory === cat
+                                ? "bg-secondary text-white hover:bg-primary"
+                                : "border border-gray-300 text-gray-600 hover:border-primary hover:text-primary"
+                                }`}
+                        >
                             {cat}
                         </button>
                     ))}
@@ -30,7 +63,7 @@ export default function Projects() {
 
                 {/* Gallery Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {projects.map((item) => (
+                    {filteredProjects.map((item) => (
                         <div key={item.id} className="group relative overflow-hidden rounded-lg aspect-square bg-gray-200 cursor-pointer">
                             {/* Image */}
                             <Image
