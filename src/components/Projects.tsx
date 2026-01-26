@@ -1,10 +1,32 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
 
-export default function Projects() {
+interface ProjectsProps {
+    limit?: number;
+    initialCategory?: string;
+    showViewAll?: boolean;
+}
+
+export default function Projects({ limit, initialCategory = "All", showViewAll = true }: ProjectsProps) {
+    const router = useRouter();
+    const pathname = usePathname();
     const categories = ["Living Room", "Kitchen", "Office", "Bedroom"];
-    const [activeCategory, setActiveCategory] = useState("All");
+    const [activeCategory, setActiveCategory] = useState(initialCategory);
+
+    const handleCategoryClick = (cat: string) => {
+        setActiveCategory(cat);
+        // If we are on the projects page or subprojects page, update the URL for "page-wise" feel
+        if (pathname.startsWith("/projects")) {
+            if (cat === "All") {
+                router.push("/projects");
+            } else {
+                router.push(`/projects/${encodeURIComponent(cat)}`);
+            }
+        }
+    };
 
     const projects = [
         { id: 1, title: "Modern Living Room", category: "Living Room", image: "/hero_bg.png" },
@@ -30,6 +52,8 @@ export default function Projects() {
         ? projects
         : projects.filter(project => project.category === activeCategory);
 
+    const displayProjects = limit ? filteredProjects.slice(0, limit) : filteredProjects;
+
     return (
         <section id="projects" className="py-20 bg-white">
             <div className="container mx-auto px-4 text-center">
@@ -39,7 +63,7 @@ export default function Projects() {
                 {/* Filter Buttons */}
                 <div className="flex flex-wrap justify-center gap-4 mb-12">
                     <button
-                        onClick={() => setActiveCategory("All")}
+                        onClick={() => handleCategoryClick("All")}
                         className={`px-6 py-2 rounded-full text-sm font-semibold transition-colors ${activeCategory === "All"
                             ? "bg-secondary text-white hover:bg-primary"
                             : "border border-gray-300 text-gray-600 hover:border-primary hover:text-primary"
@@ -50,7 +74,7 @@ export default function Projects() {
                     {categories.map((cat) => (
                         <button
                             key={cat}
-                            onClick={() => setActiveCategory(cat)}
+                            onClick={() => handleCategoryClick(cat)}
                             className={`px-6 py-2 rounded-full text-sm font-semibold transition-colors ${activeCategory === cat
                                 ? "bg-secondary text-white hover:bg-primary"
                                 : "border border-gray-300 text-gray-600 hover:border-primary hover:text-primary"
@@ -63,7 +87,7 @@ export default function Projects() {
 
                 {/* Gallery Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {filteredProjects.map((item) => (
+                    {displayProjects.map((item) => (
                         <div key={item.id} className="group relative overflow-hidden rounded-lg aspect-square bg-gray-200 cursor-pointer">
                             {/* Image */}
                             <Image
@@ -84,11 +108,16 @@ export default function Projects() {
                     ))}
                 </div>
 
-                <div className="mt-12">
-                    <button className="px-8 py-3 bg-secondary text-white font-semibold rounded hover:bg-primary transition-colors duration-300">
-                        View All Projects
-                    </button>
-                </div>
+                {showViewAll && limit && filteredProjects.length > limit && (
+                    <div className="mt-12">
+                        <Link
+                            href="/projects"
+                            className="inline-block px-8 py-3 bg-secondary text-white font-semibold rounded hover:bg-primary transition-colors duration-300"
+                        >
+                            View All Projects
+                        </Link>
+                    </div>
+                )}
             </div>
         </section>
     );
