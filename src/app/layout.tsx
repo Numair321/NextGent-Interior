@@ -19,11 +19,33 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: "NextGen Interior - Top Interior Designers in Bangalore",
-  description: "Innovative Ideas, Stylish Designs. Modern Living Room Sets, Modular Kitchens, and more. Best Interior Design Studio in Bangalore.",
-  keywords: ["Interior Designers", "Bangalore", "Home Decor", "Modular Kitchen", "Living Room Designs", "Wardrobes", "Office Interiors", "Luxury Interiors"],
+  description: "Transform your home with NextGen Interior. Best Interior Designers in Bangalore for Modular Kitchens, Luxury Wardrobes, and 3BHK/Villa Interiors. Budget-friendly & Premium Turnkey Solutions.",
+  metadataBase: new URL("https://nextgen-interior.vercel.app"),
+  alternates: {
+    canonical: "/",
+  },
+  applicationName: "NextGen Interior Bangalore",
+  authors: [{ name: "NextGen Interior Team", url: "https://nextgen-interior.vercel.app" }],
+  keywords: [
+    "Interior Designers in Bangalore",
+    "Best Home Interior Designers Bangalore",
+    "Budget Friendly Interior Designers Bangalore",
+    "Modular Kitchen Dealers in Bangalore",
+    "Luxury Interior Designers Bangalore",
+    "Turnkey Interior Contractors Bangalore",
+    "3BHK Interior Design Cost in Bangalore",
+    "Villa Interior Designers in Bengaluru",
+    "Office Interior Decorators Bangalore",
+    "False Ceiling Designers in Bangalore",
+    "Living Room Interior Design Bangalore",
+    "Top 10 Interior Designers in Bangalore",
+    "Home Decor",
+    "Wardrobes",
+    "Profile Lighting Specialists"
+  ],
   openGraph: {
     title: "NextGen Interior - Top Interior Designers in Bangalore",
-    description: "Innovative Ideas, Stylish Designs. Transform your space with NextGen Interior.",
+    description: "Innovative Ideas, Stylish Designs. Transform your space with NextGen Interior. Expert solutions for Kitchens, Wardrobes, and Living spaces in Bengaluru.",
     url: "https://nextgen-interior.vercel.app",
     siteName: "NextGen Interior",
     images: [
@@ -39,8 +61,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "NextGen Interior",
-    description: "Best Interior Designers in Bangalore",
+    title: "NextGen Interior | Best in Bangalore",
+    description: "Premium Interior Design Services in Bangalore for Homes and Offices.",
     images: ["/hero_bg.png"],
   },
   robots: {
@@ -61,6 +83,12 @@ export const metadata: Metadata = {
   verification: {
     google: "googlef0b4e609528543be",
   },
+  other: {
+    "geo.region": "IN-KA",
+    "geo.placename": "Bangalore",
+    "geo.position": "12.9716;77.5946",
+    "ICBM": "12.9716, 77.5946"
+  }
 };
 
 export default function RootLayout({
