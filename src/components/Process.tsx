@@ -7,8 +7,8 @@ export default function Process() {
         },
         {
             step: "02",
-            title: "GET DESIGNS",
-            description: "Designed exclusively to suit you and your home."
+            title: "LIGHTING & DESIGN",
+            description: "We follow a 'Lighting First' philosophy, designing your interior around the perfect lighting for a premium feel."
         },
         {
             step: "03",

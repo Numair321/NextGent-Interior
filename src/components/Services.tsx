@@ -1,24 +1,24 @@
 export default function Services() {
     const services = [
         {
-            title: "Modular Kitchen",
-            description: "All shapes of Kitchens like L, U. We will design customized to your space.",
+            title: "Custom TV Units & Media Walls",
+            description: "Sleek, modern TV units with hidden wiring, Italian finishes, and integrated lighting for a cinematic experience.",
+            icon: "📺"
+        },
+        {
+            title: "Designer Lighting & Chandeliers",
+            description: "Transform your space with architectural profile lighting, magnetic tracks, and stunning modern chandeliers.",
+            icon: "💡"
+        },
+        {
+            title: "Smart Electrical Solutions",
+            description: "Comprehensive electrical planning, smart switch integration, and custom decorative light box installations.",
+            icon: "⚡"
+        },
+        {
+            title: "Modular Kitchen & Wardrobes",
+            description: "Premium modular kitchens and wardrobes designed to maximize space and aesthetic appeal.",
             icon: "🍳"
-        },
-        {
-            title: "Wardrobes",
-            description: "Best Wardrobes in class from best designers using premium materials.",
-            icon: "👗"
-        },
-        {
-            title: "Living Rooms",
-            description: "Best Luxurious Living Room designs that blend comfort and style.",
-            icon: "🛋️"
-        },
-        {
-            title: "Ceiling",
-            description: "Best in quality and stunning ceiling designs (False Roofing).",
-            icon: "✨"
         }
     ];
 

@@ -13,7 +13,7 @@ interface ProjectsProps {
 export default function Projects({ limit, initialCategory = "All", showViewAll = true }: ProjectsProps) {
     const router = useRouter();
     const pathname = usePathname();
-    const categories = ["Living Room", "Kitchen", "Office", "Bedroom"];
+    const categories = ["Living Room", "Kitchen", "Office", "Bedroom", "Lighting", "TV Units", "Chandeliers"];
     const [activeCategory, setActiveCategory] = useState(initialCategory);
 
     const handleCategoryClick = (cat: string) => {
@@ -29,23 +29,36 @@ export default function Projects({ limit, initialCategory = "All", showViewAll =
     };
 
     const projects = [
-        { id: 1, title: "Modern Living Room", category: "Living Room", image: "/hero_bg.png" },
-        { id: 2, title: "Luxury Kitchen", category: "Kitchen", image: "/kitchen_design.png" },
-        { id: 3, title: "Master Bedroom", category: "Bedroom", image: "/bedroom_design.png" },
-        { id: 4, title: "Home Office", category: "Office", image: "/office_design.png" },
-        { id: 5, title: "Contemporary Lounge", category: "Living Room", image: "/living_room_variation.png" },
-        { id: 6, title: "Elegant Dining", category: "Kitchen", image: "/kitchen_design.png" },
+        { id: 1, title: "Ambient Living Room Lighting", category: "Living Room", image: "/profile_lighting.png" },
+        { id: 2, title: "Sleek Italian Finish TV Unit", category: "TV Units", image: "/luxury_tv_unit.png" },
+        { id: 3, title: "Modern Dining Chandelier", category: "Chandeliers", image: "/modern_chandelier.png" },
+        { id: 4, title: "Smart Electrical Installation", category: "Lighting", image: "/smart_electrical.png" },
+        { id: 5, title: "Floating Media Wall with LEDs", category: "Living Room", image: "/media_wall.png" },
+        { id: 6, title: "Modern Kitchen Island Lighting", category: "Kitchen", image: "/kitchen_lighting.png" },
+        { id: 10, title: "Master Suite Cove Lighting", category: "Bedroom", image: "/bedroom_lighting.png" },
+        // New Lighting Projects
+        { id: 16, title: "Modern Ceiling Profile Lighting", category: "Lighting", image: "/profile_light_1.png" },
+        { id: 17, title: "Architectural Baseboard Lighting", category: "Lighting", image: "/profile_light_2.png" },
+        { id: 18, title: "Feature Wall Accent Lighting", category: "Lighting", image: "/profile_light_3.png" },
         // New Kitchen Projects
         { id: 7, title: "Luxury Marble Kitchen", category: "Kitchen", image: "/kitchen_project_1.png" },
         { id: 8, title: "Scandinavian Bright Kitchen", category: "Kitchen", image: "/kitchen_project_2.png" },
         { id: 9, title: "Industrial Loft Kitchen", category: "Kitchen", image: "/kitchen_project_3.png" },
         // New Bedroom Projects
-        { id: 10, title: "Velvet Master Suite", category: "Bedroom", image: "/bedroom_project_1.png" },
         { id: 11, title: "Minimalist Zen Bedroom", category: "Bedroom", image: "/bedroom_project_2.png" },
         { id: 12, title: "Art Deco Navy Bedroom", category: "Bedroom", image: "/bedroom_project_3.png" },
         // New Office Projects
         { id: 13, title: "Executive Blue Office", category: "Office", image: "/office_project_1.png" },
         { id: 14, title: "Creative Studio Workspace", category: "Office", image: "/office_project_2.png" },
+        { id: 15, title: "Modern Home Office", category: "Office", image: "/office_design.png" },
+        // New Chandelier Projects
+        { id: 19, title: "Grand Crystal Chandelier", category: "Chandeliers", image: "/chandelier_1.png" },
+        { id: 20, title: "Minimalist Ring Chandelier", category: "Chandeliers", image: "/chandelier_2.png" },
+        { id: 21, title: "Modern Pendant Chandelier Cluster", category: "Chandeliers", image: "/chandelier_3.png" },
+        // New TV Units
+        { id: 22, title: "Luxury Floating TV Console", category: "TV Units", image: "/tv_unit_1.png" },
+        { id: 23, title: "Modern Oak Minimalist TV Unit", category: "TV Units", image: "/tv_unit_2.png" },
+        { id: 24, title: "Wall-Mounted Glass Cabinet TV Unit", category: "TV Units", image: "/tv_unit_3.png" },
     ];
 
     const filteredProjects = activeCategory === "All"

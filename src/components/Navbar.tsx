@@ -19,12 +19,12 @@ export default function Navbar() {
     return (
         <nav className="fixed w-full z-50 top-0 start-0 border-b border-gray-100 bg-white/90 backdrop-blur-md transition-all">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+                <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse" onClick={() => window.scrollTo(0, 0)}>
                     <img src="/logo.png" alt="NextGen Interior Logo" width="40" height="40" className="w-10 h-10 object-contain" />
                     <span className="self-center text-2xl font-serif font-bold whitespace-nowrap text-foreground">
                         NextGen <span className="text-primary">Interior</span>
                     </span>
-                </a>
+                </Link>
                 <button
                     onClick={() => setIsOpen(!isOpen)}
                     type="button"
@@ -44,7 +44,10 @@ export default function Navbar() {
                                 <Link
                                     href={link.href}
                                     className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 transition-colors duration-200"
-                                    onClick={() => setIsOpen(false)}
+                                    onClick={() => {
+                                        setIsOpen(false);
+                                        if (link.href === "/") window.scrollTo(0, 0);
+                                    }}
                                 >
                                     {link.name}
                                 </Link>
