@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 import { useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 
@@ -15,6 +16,27 @@ export default function Projects({ limit, initialCategory = "All", showViewAll =
     const pathname = usePathname();
     const categories = ["Living Room", "Kitchen", "Office", "Bedroom", "Lighting", "TV Units", "Chandeliers"];
     const [activeCategory, setActiveCategory] = useState(initialCategory);
+    const scrollRef = React.useRef<HTMLDivElement>(null);
+
+    // Auto-scroll effect for mobile
+    React.useEffect(() => {
+        const scrollContainer = scrollRef.current;
+        if (!scrollContainer) return;
+
+        const scroll = () => {
+            if (window.innerWidth >= 768) return; // Don't scroll on desktop
+
+            if (scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth) {
+                scrollContainer.scrollTo({ left: 0, behavior: "smooth" });
+            } else {
+                scrollContainer.scrollBy({ left: scrollContainer.clientWidth, behavior: "smooth" });
+            }
+        };
+
+        const intervalId = setInterval(scroll, 3000);
+
+        return () => clearInterval(intervalId);
+    }, []);
 
     const handleCategoryClick = (cat: string) => {
         setActiveCategory(cat);
@@ -98,10 +120,16 @@ export default function Projects({ limit, initialCategory = "All", showViewAll =
                     ))}
                 </div>
 
-                {/* Gallery Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Gallery Grid / Carousel */}
+                <div
+                    ref={scrollRef}
+                    className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth gap-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 pb-4 md:pb-0 hide-scrollbar"
+                >
                     {displayProjects.map((item) => (
-                        <div key={item.id} className="group relative overflow-hidden rounded-lg aspect-square bg-gray-200 cursor-pointer">
+                        <div
+                            key={item.id}
+                            className="group relative overflow-hidden rounded-lg aspect-square bg-gray-200 cursor-pointer min-w-[85vw] md:min-w-0 snap-center"
+                        >
                             {/* Image */}
                             <Image
                                 src={item.image}
@@ -120,6 +148,20 @@ export default function Projects({ limit, initialCategory = "All", showViewAll =
                         </div>
                     ))}
                 </div>
+
+                {/* Mobile visual hint */}
+                <div className="md:hidden flex justify-center mt-2">
+                    <span className="text-xs text-gray-400 animate-pulse">Swipe to explore</span>
+                </div>
+                <style jsx>{`
+                    .hide-scrollbar::-webkit-scrollbar {
+                        display: none;
+                    }
+                    .hide-scrollbar {
+                        -ms-overflow-style: none;
+                        scrollbar-width: none;
+                    }
+                `}</style>
 
                 {showViewAll && limit && filteredProjects.length > limit && (
                     <div className="mt-12">
